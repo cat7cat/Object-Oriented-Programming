@@ -54,6 +54,7 @@ echo "<hr>";
 echo  $Student->sum("graduate_at",['dept'=>2]); 
 */
 
+/*
 //利用$Score 把簡寫的部分值分開都列出來
 $Score=new DB("student_scores");
 echo $Score->max('score');  //列出最大值
@@ -66,9 +67,12 @@ echo "整張資料表筆數：".$Student->count();  //列學生有幾個
 echo "<hr>";
 echo "dept為2的資料筆數:".$Student->count(['dept'=>2]);  
 echo "<hr>";
+*/
 
 
-
+// 使用function q 來串接資料庫 再用q來呼叫查詢列表
+$rows=q("select * from `dept` order by id desc")
+dd($rows);
 
 
 class DB{
@@ -338,6 +342,22 @@ function dd($array){
     print_r($array);
     echo "</pre>";
 }
+
+
+
+//萬用sql函式
+function q($sql){
+    $dsn="mysql:host=localhost;charset=utf8;dbname=school";
+    $pdo=new PDO($dsn,'root','');
+    //echo $sql;
+    return $pdo->query($sql)->fetchAll();
+}
+
+//header函式
+function to($location){
+    header("location:$location");
+}
+
 
 
 
