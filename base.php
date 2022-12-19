@@ -71,8 +71,10 @@ echo "<hr>";
 
 
 // 使用function q 來串接資料庫 再用q來呼叫查詢列表
-$rows=q("select * from `dept` order by id desc")
-dd($rows);
+/* 
+$rows=q("select * from `dept` order by id desc");
+dd($rows); 
+*/
 
 
 class DB{
